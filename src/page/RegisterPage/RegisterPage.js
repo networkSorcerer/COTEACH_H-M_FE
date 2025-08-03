@@ -50,6 +50,9 @@ const RegisterPage = () => {
     }
   };
 
+  useEffect(() => {
+    dispatch(clearErrors()); // 초기 진입 시 에러 초기화
+  }, [dispatch]);
   return (
     <Container className="register-area">
       {registrationError && (
