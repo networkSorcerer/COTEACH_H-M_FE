@@ -22,9 +22,7 @@ const Login = () => {
     }
   }, [navigate]);
 
-  useEffect(() => {
-    console.log("eeeeee", loginError);
-  }, [loginError]);
+
 
   const handleLoginWithEmail = (event) => {
     event.preventDefault();
