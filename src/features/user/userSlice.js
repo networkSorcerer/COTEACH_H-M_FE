@@ -98,7 +98,7 @@ const userSlice = createSlice({
         state.user = action.payload.user;
         state.loginError = null;
       })
-      .addCase(loginWithEmail.rejected, (state) => {
+      .addCase(loginWithEmail.rejected, (state, action) => {
         state.loginError = action.payload;
         state.loading = false;
       });
