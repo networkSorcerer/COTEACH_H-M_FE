@@ -12,8 +12,7 @@ export const loginWithEmail = createAsyncThunk(
       sessionStorage.setItem("token", response.data.token);
       return response.data;
     } catch (error) {
-      const message = error.response?.data?.error || "로그인 실패";
-      return rejectWithValue(message);
+      return rejectWithValue(error.error);
     }
   }
 );
