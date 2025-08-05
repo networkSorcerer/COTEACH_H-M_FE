@@ -7,6 +7,7 @@ const CLOUDNAME = process.env.REACT_APP_CLOUDINARY_CLOUD_NAME;
 const UPLOADPRESET = process.env.REACT_APP_CLOUDINARY_PRESET;
 
 class CloudinaryUploadWidget extends Component {
+  
   componentDidMount() {
     var myWidget = window.cloudinary.createUploadWidget(
       {
