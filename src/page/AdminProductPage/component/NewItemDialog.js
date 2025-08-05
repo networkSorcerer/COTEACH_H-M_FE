@@ -123,6 +123,7 @@ const NewItemDialog = ({ mode, showDialog, setShowDialog }) => {
 
   const uploadImage = (url) => {
     //이미지 업로드
+    setFormData({ ...formData, image: url });
   };
 
   return (
