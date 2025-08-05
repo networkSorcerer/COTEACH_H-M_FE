@@ -86,6 +86,8 @@ const NewItemDialog = ({ mode, showDialog, setShowDialog }) => {
 
   const deleteStock = (idx) => {
     //재고 삭제하기
+    const newStock = stock.filter((item, index) => index !== idx);
+    setStock(newStock);
   };
 
   const handleSizeChange = (value, index) => {
