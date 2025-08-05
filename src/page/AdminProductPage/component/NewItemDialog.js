@@ -75,7 +75,7 @@ const NewItemDialog = ({ mode, showDialog, setShowDialog }) => {
 
   const handleChange = (event) => {
     //form에 데이터 넣어주기
-    const { id, value } = event.tartet;
+    const { id, value } = event.target;
     setFormData({ ...formData, [id]: value });
   };
 
