@@ -11,7 +11,7 @@ export const getProductList = createAsyncThunk(
       if (response.status !== 200) throw new Error(response.error);
       return response.data.data;
     } catch (error) {
-      rejectWithValue(error.error);
+     return  rejectWithValue(error.error);
     }
   }
 );
