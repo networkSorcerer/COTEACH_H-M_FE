@@ -68,6 +68,11 @@ const productSlice = createSlice({
       state.error = "";
       state.success = false;
     },
+    clearProductStatus: (state) => {
+      state.success = null;
+      state.error = null;
+      state.selectedProduct = null;
+    },
   },
   extraReducers: (builder) => {
     builder

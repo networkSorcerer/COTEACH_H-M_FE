@@ -56,9 +56,11 @@ const NewItemDialog = ({ mode, showDialog, setShowDialog }) => {
     }
   }, [showDialog]);
   console.log("stock", stock);
+
   const handleClose = () => {
-    //모든걸 초기화시키고;
-    // 다이얼로그 닫아주기
+    setShowDialog(false); // 모달 닫기
+    setFormData({ ...InitialFormData }); // form 초기화
+    dispatch(clearProductStatus()); // success, error 등 초기화 (아래에서 설명)
   };
 
   const handleSubmit = (event) => {
