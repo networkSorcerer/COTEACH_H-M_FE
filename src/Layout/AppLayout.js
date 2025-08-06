@@ -14,8 +14,12 @@ const AppLayout = ({ children }) => {
 
   const { user } = useSelector((state) => state.user);
   useEffect(() => {
-    dispatch(loginWithToken());
+    const token = sessionStorage.getItem("token");
+    if (token) {
+      dispatch(loginWithToken());
+    }
   }, []);
+
   useEffect(() => {
     if (user) {
       dispatch(getCartQty());
