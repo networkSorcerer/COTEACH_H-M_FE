@@ -39,7 +39,6 @@ const Navbar = ({ user }) => {
   };
   const handleLogout = () => {
     dispatch(logout());
-    dispatch(initialCart()); // optional: 장바구니 초기화
     navigate("/");
   };
   return (
