@@ -22,7 +22,6 @@ export const loginWithGoogle = createAsyncThunk(
   async (token, { rejectWithValue }) => {}
 );
 
-export const logout = () => (dispatch) => {};
 export const registerUser = createAsyncThunk(
   "user/registerUser",
   async (
@@ -83,6 +82,10 @@ const userSlice = createSlice({
       state.loginError = null;
       state.registrationError = null;
     },
+    logout: (state) => {
+      state.user = null;
+      sessionStorage.removeItem("token");
+    },
   },
   extraReducers: (builder) => {
     builder
@@ -113,5 +116,8 @@ const userSlice = createSlice({
       });
   },
 });
-export const { clearErrors } = userSlice.actions;
+
+// ✅ 여기에서 logout도 export 해야 사용 가능!
+export const { clearErrors, logout } = userSlice.actions;
+
 export default userSlice.reducer;
