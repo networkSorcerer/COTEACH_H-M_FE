@@ -254,12 +254,18 @@ const NewItemDialog = ({ mode, showDialog, setShowDialog }) => {
         <Form.Group className="mb-3" controlId="Image" required>
           <Form.Label>Image</Form.Label>
           <CloudinaryUploadWidget uploadImage={uploadImage} />
-
           {formData.image && (
             <img
               id="uploadedimage"
               src={formData.image}
-              className="upload-image mt-2"
+              style={{
+                width: "100px",
+                height: "100px",
+                objectFit: "cover",
+                marginTop: "8px",
+                border: "1px solid #ddd",
+                borderRadius: "4px",
+              }}
               alt="uploadedimage"
             />
           )}
