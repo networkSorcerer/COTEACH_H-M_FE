@@ -45,10 +45,9 @@ const AdminProductPage = () => {
     if (searchQuery.name === "") {
       delete searchQuery.name;
     }
-    console.log("qqq", searchQuery);
     const params = new URLSearchParams(searchQuery);
     const query = params.toString();
-    console.log("qqqq", query);
+    navigate("?" + query);
   }, [searchQuery]);
 
   const deleteItem = (id) => {
