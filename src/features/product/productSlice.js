@@ -9,6 +9,7 @@ export const getProductList = createAsyncThunk(
     try {
       const response = await api.get("/product", { params: { ...query } });
       return response.data.products;
+      console.log("prpdsdfsdfsdf", response.data);
     } catch (error) {
       return rejectWithValue(error.error);
     }
