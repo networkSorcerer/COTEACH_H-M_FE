@@ -1,8 +1,8 @@
 import React, { Component } from "react";
 import { Button } from "@mui/material";
 
-const CLOUDNAME = import.meta.env.REACT_APP_CLOUDINARY_CLOUD_NAME;
-const UPLOADPRESET = import.meta.env.REACT_APP_CLOUDINARY_PRESET;
+const CLOUDNAME = process.env.REACT_APP_CLOUDINARY_CLOUD_NAME;
+const UPLOADPRESET = process.env.REACT_APP_CLOUDINARY_PRESET;
 
 class CloudinaryUploadWidget extends Component {
   componentDidMount() {

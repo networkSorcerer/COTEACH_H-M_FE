@@ -104,6 +104,10 @@ const productSlice = createSlice({
   },
 });
 
-export const { setSelectedProduct, setFilteredList, clearError } =
-  productSlice.actions;
+export const {
+  setSelectedProduct,
+  setFilteredList,
+  clearError,
+  clearProductStatus,
+} = productSlice.actions;
 export default productSlice.reducer;
