@@ -96,7 +96,7 @@ const AdminProductPage = () => {
           nextLabel="next >"
           onPageChange={handlePageClick}
           pageRangeDisplayed={5}
-          pageCount={100}
+          pageCount={totalPageNum}
           forcePage={searchQuery.page - 1}
           previousLabel="< previous"
           renderOnZeroPageCount={null}
