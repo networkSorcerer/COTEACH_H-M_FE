@@ -8,7 +8,7 @@ export const getProductList = createAsyncThunk(
   async (query, { rejectWithValue }) => {
     try {
       const response = await api.get("/product", { params: { ...query } });
-      return response.data.productList;
+      return response.data;
     } catch (error) {
       return rejectWithValue(error.error);
     }
