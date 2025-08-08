@@ -53,3 +53,5 @@ const LandingPage = () => {
     </Container>
   );
 };
+
+export default LandingPage;
