@@ -21,7 +21,7 @@ const LandingPage = () => {
     );
   }, [query, dispatch]);
 
-  if (loading) {
+  if (loading === true) {
     return (
       <div className="d-flex justify-content-center my-5">
         <Spinner animation="border" role="status" />
