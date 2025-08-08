@@ -32,11 +32,7 @@ const LandingPage = () => {
   if (!loading && productList.length === 0) {
     return (
       <div className="text-align-center empty-bag">
-        {name === "" ? (
-          <h2>등록된 상품이 없습니다!</h2>
-        ) : (
-          <h2>{name}과 일치한 상품이 없습니다!</h2>
-        )}
+        {name === "" ? <h2></h2> : <h2>{name}과 일치한 상품이 없습니다!</h2>}
       </div>
     );
   }
