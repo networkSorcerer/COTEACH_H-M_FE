@@ -20,8 +20,7 @@ const LandingPage = () => {
       })
     );
   }, [query, dispatch]);
-
-  if (loading) {
+  if (loading && (!productList || productList.length === 0)) {
     return (
       <div className="d-flex justify-content-center my-5">
         <Spinner animation="border" role="status" />
