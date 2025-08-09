@@ -74,7 +74,8 @@ const cartSlice = createSlice({
   initialState,
   reducers: {
     initialCart: (state) => {
-      state.cartItemCount = 0;
+      // initialState를 직접 덮어쓰는 방식도 가능해요
+      Object.assign(state, initialState);
     },
     // You can still add reducers here for non-async actions if necessary
   },
