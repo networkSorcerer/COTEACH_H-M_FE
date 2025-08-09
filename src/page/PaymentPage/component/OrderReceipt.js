@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Button } from "react-bootstrap";
 import { useNavigate } from "react-router";
 import { useLocation } from "react-router-dom";
@@ -7,7 +7,10 @@ import { currencyFormat } from "../../../utils/number";
 const OrderReceipt = ({ cartList, totalPrice }) => {
   const location = useLocation();
   const navigate = useNavigate();
-
+  useEffect(() => {
+    console.log("cartList 너의 형태는? ", cartList);
+    console.log("totalPrice 너의 형태는? ", totalPrice);
+  });
   return (
     <div className="receipt-container">
       <h3 className="receipt-title">주문 내역</h3>
