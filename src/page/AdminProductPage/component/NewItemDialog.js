@@ -61,7 +61,8 @@ const NewItemDialog = ({ mode, showDialog, setShowDialog }) => {
   const handleClose = () => {
     setShowDialog(false); // 모달 닫기
     setFormData({ ...InitialFormData }); // form 초기화
-    dispatch(clearProductStatus()); // success, error 등 초기화 (아래에서 설명)
+    dispatch(clearProductStatus()); // success, error 등 초기화
+    setStockError(false);
   };
 
   const handleSubmit = (event) => {
