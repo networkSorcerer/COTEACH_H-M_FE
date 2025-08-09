@@ -14,7 +14,31 @@ const initialState = {
 // Async thunk actions
 export const addToCart = createAsyncThunk(
   "cart/addToCart",
-  async ({ id, size }, { rejectWithValue, dispatch }) => {}
+  async ({ id, size }, { rejectWithValue, dispatch }) => {
+    try {
+      const response = await api.post("/cart", { productId: id, size, qty: 1 });
+      if (response.status !== 200) {
+        throw new Error(response.data?.error || "Failed to delete product");
+      }
+
+      dispatch(
+        showToastMessage({
+          message: "카트에 아이템이 추가 됐습니다.",
+          status: "success",
+        })
+      );
+      return response.data;
+    } catch (error) {
+      // 서버에서 내려준 에러 메시지 or 기본 메시지
+      dispatch(
+        showToastMessage({
+          message: "카트에 아이템이 추가 실패.",
+          status: "error",
+        })
+      );
+      return rejectWithValue(error.error);
+    }
+  }
 );
 
 export const getCartList = createAsyncThunk(
@@ -46,7 +70,22 @@ const cartSlice = createSlice({
     },
     // You can still add reducers here for non-async actions if necessary
   },
-  extraReducers: (builder) => {},
+  extraReducers: (builder) => {
+    builder
+      .addCase(addToCart.pending, (state, action) => {
+        state.loading = true;
+      })
+      .addCase(addToCart.fulfilled, (state, action) => {
+        state.loading = false;
+        state.error = "";
+        state.success = true;
+      })
+      .addCase(addToCart.rejected, (state, action) => {
+        state.loading = false;
+        state.error = action.payload;
+        state.success = false;
+      });
+  },
 });
 
 export default cartSlice.reducer;
