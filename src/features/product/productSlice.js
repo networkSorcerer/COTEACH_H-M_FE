@@ -42,7 +42,7 @@ export const createProduct = createAsyncThunk(
       dispatch(getProductList({ page: 1 }));
       dispatch(clearProductStatus());
 
-      return response.data.data;
+      return response.data;
     } catch (error) {
       return rejectWithValue(error.error);
     }
@@ -173,7 +173,7 @@ const productSlice = createSlice({
         state.loading = true;
       })
       .addCase(getProductDetail.fulfilled, (state, action) => {
-        state.selectedProduct = action.payload;
+        state.selectedProduct = action.payload.data;
         state.loading = false;
         state.error = "";
       })
