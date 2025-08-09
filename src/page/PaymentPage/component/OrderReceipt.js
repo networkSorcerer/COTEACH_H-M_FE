@@ -21,7 +21,7 @@ const OrderReceipt = ({ cartList, totalPrice }) => {
               <div className="display-flex space-between">
                 <div>{item.productId.name}</div>
 
-                <div>₩ {item.productId.price * item.qty}</div>
+                <div>₩ {currencyFormat(item.productId.price * item.qty)}</div>
               </div>
             </li>
           ))}
@@ -31,7 +31,7 @@ const OrderReceipt = ({ cartList, totalPrice }) => {
           <strong>Total:</strong>
         </div>
         <div>
-          <strong>₩ {totalPrice}</strong>
+          <strong>₩ {currencyFormat(totalPrice)}</strong>
         </div>
       </div>
       {/* {location.pathname.includes("/cart") && cartList.length > 0 && (
