@@ -99,6 +99,7 @@ const cartSlice = createSlice({
         state.loading = false;
         state.error = "";
         state.cartList = action.payload;
+        state.cartItemCount = action.payload;
       })
       .addCase(getCartList.rejected, (state, action) => {
         state.loading = false;

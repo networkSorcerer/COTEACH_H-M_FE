@@ -2,7 +2,7 @@ import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 
 import { showToastMessage } from "../common/uiSlice";
 import api from "../../utils/api";
-import { initialCart } from "../cart/cartSlice";
+import { getCartList, initialCart } from "../cart/cartSlice";
 
 export const loginWithEmail = createAsyncThunk(
   "user/loginWithEmail",
@@ -11,6 +11,7 @@ export const loginWithEmail = createAsyncThunk(
       const response = await api.post("/auth/login", { email, password });
       if (response.status === 200) {
         sessionStorage.setItem("token", response.data.token);
+        dispatch(getCartList());
         return response.data;
       }
     } catch (error) {
