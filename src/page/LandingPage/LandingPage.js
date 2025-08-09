@@ -4,6 +4,7 @@ import { Row, Col, Container, Spinner } from "react-bootstrap";
 import { useSearchParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { getProductList } from "../../features/product/productSlice";
+import { getCartList } from "../../features/cart/cartSlice";
 
 const LandingPage = () => {
   const dispatch = useDispatch();
@@ -19,6 +20,7 @@ const LandingPage = () => {
         name,
       })
     );
+    dispatch(getCartList());
   }, [query, dispatch]);
 
   if (loading) {
