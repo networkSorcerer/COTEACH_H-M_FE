@@ -173,7 +173,7 @@ const productSlice = createSlice({
         state.loading = true;
       })
       .addCase(getProductDetail.fulfilled, (state, action) => {
-        state.selectedProduct = action.payload;
+        state.selectedProduct = action.payload.data;
         state.loading = false;
         state.error = "";
       })
