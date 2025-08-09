@@ -58,7 +58,6 @@ export const deleteCartItem = createAsyncThunk(
   "cart/deleteCartItem",
   async (id, { rejectWithValue, dispatch }) => {
     try {
-      console.log("delete id 잘 가져가니? ", id);
       const response = await api.delete(`/cart/${id}`);
       if (response.status !== 200) throw new Error(response.error);
       dispatch(getCartList());
@@ -74,12 +73,8 @@ export const updateQty = createAsyncThunk(
   async ({ id, value }, { rejectWithValue, dispatch }) => {
     try {
       const response = await api.put(`/cart/${id}`, { qty: value });
-      if (response.status !== 200)
-        throw new Error(response.data?.error || "Update failed");
-
-      // update 성공 후 카트 리스트 재요청
+      if (response.status !== 200) throw new Error(response.error);
       dispatch(getCartList());
-
       return response.data;
     } catch (error) {
       return rejectWithValue(error.response?.data?.error || error.message);
