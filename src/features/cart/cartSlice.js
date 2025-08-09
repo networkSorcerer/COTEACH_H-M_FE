@@ -71,12 +71,15 @@ export const deleteCartItem = createAsyncThunk(
 
 export const updateQty = createAsyncThunk(
   "cart/updateQty",
-  async ({ id, value }, { rejectWithValue }) => {
+  async ({ id, value }, { rejectWithValue, dispatch }) => {
     try {
       const response = await api.put(`/cart/${id}`, { qty: value });
       if (response.status !== 200)
         throw new Error(response.data?.error || "Update failed");
+
+      // update 성공 후 카트 리스트 재요청
       dispatch(getCartList());
+
       return response.data;
     } catch (error) {
       return rejectWithValue(error.response?.data?.error || error.message);
