@@ -60,6 +60,7 @@ export const deleteCartItem = createAsyncThunk(
     try {
       const response = await api.delete(`/cart/${id}`);
       if (response.status !== 200) throw new Error(response.error);
+      dispatch(getCartList());
       return response.data;
     } catch (error) {
       return rejectWithValue(error.error);
@@ -74,6 +75,7 @@ export const updateQty = createAsyncThunk(
       const response = await api.put(`/cart/${id}`, { qty: value });
       if (response.status !== 200)
         throw new Error(response.data?.error || "Update failed");
+      dispatch(getCartList());
       return response.data;
     } catch (error) {
       return rejectWithValue(error.response?.data?.error || error.message);
