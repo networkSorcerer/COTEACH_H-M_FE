@@ -70,6 +70,7 @@ export const editProduct = createAsyncThunk(
         showToastMessage({ message: "상품 수정 완료", status: "success" })
       );
       dispatch(getProductList({ page: 1 }));
+      if (response.status == 200) dispatch(clearProductStatus());
       return response.data.data;
     } catch (error) {
       return rejectWithValue(error.error);
