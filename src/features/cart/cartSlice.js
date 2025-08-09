@@ -47,7 +47,7 @@ export const getCartList = createAsyncThunk(
     try {
       const response = await api.get("/cart");
       if (response.status !== 200) throw new Error(response.error);
-      return response.data.data;
+      return response.data;
     } catch (error) {
       return rejectWithValue(error.error);
     }
@@ -99,7 +99,7 @@ const cartSlice = createSlice({
       .addCase(getCartList.fulfilled, (state, action) => {
         state.loading = false;
         state.error = "";
-        state.cartList = action.payload;
+        state.cartList = action.payload.data;
         state.cartItemCount = action.payload.cartItemQty;
       })
       .addCase(getCartList.rejected, (state, action) => {
