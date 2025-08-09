@@ -115,9 +115,14 @@ const NewItemDialog = ({ mode, showDialog, setShowDialog }) => {
   };
 
   const handleStockChange = (value, index) => {
-    //재고 수량 변환하기
+    // 음수일 경우 0으로 고정하거나 무시하기
+    const newValue = Number(value);
+    if (newValue < 0) return; // 무시하려면 이 줄 사용
+    // 또는
+    // const newValue = newValue < 0 ? 0 : newValue;
+
     const newStock = [...stock];
-    newStock[index][1] = value;
+    newStock[index][1] = newValue;
     setStock(newStock);
   };
 

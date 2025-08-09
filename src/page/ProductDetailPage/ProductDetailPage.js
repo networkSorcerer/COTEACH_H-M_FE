@@ -24,6 +24,7 @@ const ProductDetail = () => {
   };
   const selectSize = (value) => {
     // 사이즈 추가하기
+    setSize(value);
   };
 
   useEffect(() => {
