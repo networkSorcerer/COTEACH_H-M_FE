@@ -22,7 +22,7 @@ export const getProductDetail = createAsyncThunk(
     try {
       const response = await api.get(`/product/${id}`);
       console.log("getProductDetail dddd", response);
-      setSelectedProduct(response.data.data);
+      setSelectedProduct(response);
       return response.data;
     } catch (error) {
       return rejectWithValue(error.error);
