@@ -22,7 +22,7 @@ export const getProductDetail = createAsyncThunk(
     try {
       const response = await api.get(`/product/${id}`);
       console.log("getProductDetail dddd", response);
-      return response.data.data;
+      return response.data;
     } catch (error) {
       return rejectWithValue(error.error);
     }
@@ -173,7 +173,7 @@ const productSlice = createSlice({
         state.loading = true;
       })
       .addCase(getProductDetail.fulfilled, (state, action) => {
-        state.selectedProduct = action.payload.data;
+        state.selectedProduct = action.payload;
         state.loading = false;
         state.error = "";
       })
