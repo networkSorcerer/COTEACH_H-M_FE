@@ -35,6 +35,7 @@ const NewItemDialog = ({ mode, showDialog, setShowDialog }) => {
 
   useEffect(() => {
     console.log("ssssss", success);
+    dispatch(clearProductStatus());
     if (success) setShowDialog(false);
   }, [success]);
 
