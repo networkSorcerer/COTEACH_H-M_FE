@@ -27,7 +27,7 @@ export const addToCart = createAsyncThunk(
           status: "success",
         })
       );
-      return response.data;
+      return response.data.cartItemQty;
     } catch (error) {
       // 서버에서 내려준 에러 메시지 or 기본 메시지
       dispatch(
@@ -78,12 +78,11 @@ const cartSlice = createSlice({
       .addCase(addToCart.fulfilled, (state, action) => {
         state.loading = false;
         state.error = "";
-        state.success = true;
+        state.cartItemCount = action.payload;
       })
       .addCase(addToCart.rejected, (state, action) => {
         state.loading = false;
         state.error = action.payload;
-        state.success = false;
       });
   },
 });
