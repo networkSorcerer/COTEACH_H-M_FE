@@ -6,12 +6,12 @@ import { getCartList, initialCart } from "../cart/cartSlice";
 
 export const loginWithEmail = createAsyncThunk(
   "user/loginWithEmail",
-  async ({ email, password }, { rejectWithValue }) => {
+  async ({ email, password }, { dispatch, rejectWithValue }) => {
     try {
       const response = await api.post("/auth/login", { email, password });
       if (response.status === 200) {
         sessionStorage.setItem("token", response.data.token);
-        dispatch(getCartList());
+        dispatch(getCartList()); // 여기 dispatch 사용 가능
         return response.data;
       }
     } catch (error) {

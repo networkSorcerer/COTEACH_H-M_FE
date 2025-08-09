@@ -28,13 +28,15 @@ const Login = () => {
     dispatch(loginWithEmail({ email, password }));
   };
 
-  const handleGoogleLogin = async (googleData) => {
-    //구글 로그인 하기
-  };
+ 
 
   if (user) {
     navigate("/");
   }
+
+   const handleGoogleLogin = async (googleData) => {
+    //구글 로그인 하기
+  };
   return (
     <>
       <Container className="login-area">
