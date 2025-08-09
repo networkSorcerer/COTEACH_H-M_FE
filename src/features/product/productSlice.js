@@ -9,6 +9,7 @@ export const getProductList = createAsyncThunk(
     try {
       const response = await api.get("/product", { params: { ...query } });
       console.log("rrrrr", response);
+      dispatch(clearProductStatus());
       return response.data;
     } catch (error) {
       return rejectWithValue(error.error);
@@ -32,6 +33,7 @@ export const createProduct = createAsyncThunk(
         showToastMessage({ message: "상품 생성 완료", status: "success" })
       );
       dispatch(getProductList({ page: 1 }));
+
       return response.data.data;
     } catch (error) {
       return rejectWithValue(error.error);
@@ -70,6 +72,7 @@ export const editProduct = createAsyncThunk(
         showToastMessage({ message: "상품 수정 완료", status: "success" })
       );
       dispatch(getProductList({ page: 1 }));
+
       return response.data.data;
     } catch (error) {
       return rejectWithValue(error.error);
