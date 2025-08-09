@@ -27,6 +27,8 @@ const ProductDetail = () => {
   };
 
   useEffect(() => {
+    console.log("선택받은 상품 ", selectedProduct);
+    console.log("id는 잘 찾는 겨? ", id);
     dispatch(getProductDetail(id));
   }, [id, dispatch]);
 
