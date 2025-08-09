@@ -41,8 +41,24 @@ export const createProduct = createAsyncThunk(
 
 export const deleteProduct = createAsyncThunk(
   "products/deleteProduct",
-  async (id, { dispatch, rejectWithValue }) => {}
+  async (id, { dispatch, rejectWithValue }) => {
+    try {
+      const response = await api.delete(`/product/${id}`);
+      if (response.status !== 200) {
+        throw new Error(response.data?.error || "Failed to delete product");
+      }
+      // 삭제 후 상품 목록 갱신
+      dispatch(getProductList({ page: 1 }));
+      return response.data.data; // 서버에서 반환한 삭제된 상품
+    } catch (error) {
+      // 서버에서 내려준 에러 메시지 or 기본 메시지
+      return rejectWithValue(
+        error.response?.data?.error || error.message || "Delete failed"
+      );
+    }
+  }
 );
+
 
 export const editProduct = createAsyncThunk(
   "products/editProduct",
