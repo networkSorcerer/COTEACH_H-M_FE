@@ -13,8 +13,8 @@ const Login = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const { user, loginError } = useSelector((state) => state.user);
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  const [email, setEmail] = useState("admin@gmail.com");
+  const [password, setPassword] = useState("admin");
 
   useEffect(() => {
     if (loginError) {
@@ -48,8 +48,9 @@ const Login = () => {
             <Form.Label>Email address</Form.Label>
             <Form.Control
               type="email"
-              placeholder="Enter email"
+              placeholder="Email"
               required
+              value={email}
               onChange={(event) => setEmail(event.target.value)}
             />
           </Form.Group>
@@ -60,6 +61,7 @@ const Login = () => {
               type="password"
               placeholder="Password"
               required
+              value={password}
               onChange={(event) => setPassword(event.target.value)}
             />
           </Form.Group>
