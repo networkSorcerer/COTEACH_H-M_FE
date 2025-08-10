@@ -14,6 +14,7 @@ const ProductDetail = () => {
   const [size, setSize] = useState("");
   const { id } = useParams();
   const [sizeError, setSizeError] = useState(false);
+  const [qty, setQty] = useState(false);
   const user = useSelector((state) => state.user.user);
   const navigate = useNavigate();
 
@@ -32,6 +33,9 @@ const ProductDetail = () => {
     // 사이즈 추가하기
     if (sizeError) setSizeError(false);
     setSize(value);
+  };
+  const handleQtyChange = (qty) => {
+    setQty(qty);
   };
 
   useEffect(() => {
@@ -104,7 +108,6 @@ const ProductDetail = () => {
             <Form.Select
               onChange={(event) => handleQtyChange(event.target.value)}
               required
-              defaultValue={item.qty}
               className="qty-dropdown"
             >
               <option value={1}>1</option>
