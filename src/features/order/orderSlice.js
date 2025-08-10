@@ -29,7 +29,7 @@ export const createOrder = createAsyncThunk(
       // 백엔드에서 보낸 에러 메시지 추출
       const errMsg = error.response?.data?.error || "주문에 실패했습니다.";
 
-      dispatch(showToastMessage({ message: errMsg, status: "fail" }));
+      dispatch(showToastMessage({ message: errMsg, status: "error" }));
 
       return rejectWithValue(errMsg);
     }
