@@ -13,7 +13,7 @@ const initialState = {
   totalPageNum: 1,
 };
 
-// Async thunks
+// Async thunks 
 export const createOrder = createAsyncThunk(
   "order/createOrder",
   async (payload, { dispatch, rejectWithValue }) => {
