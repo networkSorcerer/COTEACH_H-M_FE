@@ -68,6 +68,10 @@ const orderSlice = createSlice({
     setSelectedOrder: (state, action) => {
       state.selectedOrder = action.payload;
     },
+    resetOrders: (state) => {
+      // initialState를 직접 덮어쓰는 방식도 가능해요
+      Object.assign(state, initialState);
+    },
   },
   extraReducers: (builder) => {
     builder

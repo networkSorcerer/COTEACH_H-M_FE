@@ -2,7 +2,7 @@ import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import { showToastMessage } from "../common/uiSlice";
 import api from "../../utils/api";
 import { getCartList, initialCart } from "../cart/cartSlice";
-
+import { resetOrders } from "../order/orderSlice";
 export const loginWithEmail = createAsyncThunk(
   "user/loginWithEmail",
   async ({ email, password }, { dispatch, rejectWithValue }) => {
@@ -35,6 +35,7 @@ export const logout = () => (dispatch) => {
   sessionStorage.removeItem("token");
   dispatch(clearUser());
   dispatch(initialCart());
+  dispatch(resetOrders());
 };
 
 export const registerUser = createAsyncThunk(
