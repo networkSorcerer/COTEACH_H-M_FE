@@ -95,8 +95,29 @@ const ProductDetail = () => {
                 )}
             </Dropdown.Menu>
           </Dropdown>
+
           <div className="warning-message">
             {sizeError && "사이즈를 선택해주세요."}
+          </div>
+          <div>
+            Quantity:
+            <Form.Select
+              onChange={(event) => handleQtyChange(event.target.value)}
+              required
+              defaultValue={item.qty}
+              className="qty-dropdown"
+            >
+              <option value={1}>1</option>
+              <option value={2}>2</option>
+              <option value={3}>3</option>
+              <option value={4}>4</option>
+              <option value={5}>5</option>
+              <option value={6}>6</option>
+              <option value={7}>7</option>
+              <option value={8}>8</option>
+              <option value={9}>9</option>
+              <option value={10}>10</option>
+            </Form.Select>
           </div>
           <Button variant="dark" className="add-button" onClick={addItemToCart}>
             추가
