@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
-import { Container, Row, Col, Button, Dropdown } from "react-bootstrap";
+import { Container, Row, Col, Button, Dropdown, Form } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import { ColorRing } from "react-loader-spinner";
 import { currencyFormat } from "../../utils/number";
@@ -99,7 +99,7 @@ const ProductDetail = () => {
                 )}
             </Dropdown.Menu>
           </Dropdown>
-          <div>
+          <Col>
             Quantity:
             <Form.Select
               onChange={(event) => handleQtyChange(event.target.value)}
@@ -117,7 +117,7 @@ const ProductDetail = () => {
               <option value={9}>9</option>
               <option value={10}>10</option>
             </Form.Select>
-          </div>
+          </Col>
           <div className="warning-message">
             {sizeError && "사이즈를 선택해주세요."}
           </div>
