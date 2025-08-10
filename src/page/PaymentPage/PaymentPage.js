@@ -36,6 +36,22 @@ const PaymentPage = () => {
   const handleSubmit = (event) => {
     event.preventDefault();
     // 오더 생성하기
+    const { firstName, lastName, contact, address, city, zip } = shipInfo;
+    dispatch(
+      createOrder({
+        totalPrice,
+        shipTo: { address, city, zip },
+        contact: { firstName, lastName, contact },
+        orderList: cartList.map((item) => {
+          return {
+            productId: item.productId._id,
+            price: item.productId.price,
+            qty: item.qty,
+            size: item.size,
+          };
+        }),
+      })
+    );
   };
 
   const handleFormChange = (event) => {
