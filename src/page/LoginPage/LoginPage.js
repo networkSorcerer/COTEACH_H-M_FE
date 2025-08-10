@@ -22,21 +22,18 @@ const Login = () => {
     }
   }, [navigate]);
 
-
   const handleLoginWithEmail = (event) => {
     event.preventDefault();
     dispatch(loginWithEmail({ email, password }));
   };
 
- 
-
   if (user) {
     navigate("/");
   }
 
-   const handleGoogleLogin = async (googleData) => {
+  const handleGoogleLogin = async (googleData) => {
     //구글 로그인 하기
-    
+    dispatch(loginWithGoogle(googleData.credential));
   };
   return (
     <>
