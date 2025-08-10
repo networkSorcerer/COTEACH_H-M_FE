@@ -52,6 +52,7 @@ const PaymentPage = () => {
       setCardValue({ ...cardValue, [name]: newValue });
       return;
     }
+    setCardValue({ ...cardValue, [name]: value });
   };
 
   const handleInputFocus = (e) => {
