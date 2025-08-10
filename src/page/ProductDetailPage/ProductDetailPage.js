@@ -99,10 +99,6 @@ const ProductDetail = () => {
                 )}
             </Dropdown.Menu>
           </Dropdown>
-
-          <div className="warning-message">
-            {sizeError && "사이즈를 선택해주세요."}
-          </div>
           <div>
             Quantity:
             <Form.Select
@@ -122,6 +118,10 @@ const ProductDetail = () => {
               <option value={10}>10</option>
             </Form.Select>
           </div>
+          <div className="warning-message">
+            {sizeError && "사이즈를 선택해주세요."}
+          </div>
+
           <Button variant="dark" className="add-button" onClick={addItemToCart}>
             추가
           </Button>
