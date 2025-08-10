@@ -59,11 +59,11 @@ export const updateOrder = createAsyncThunk(
   "order/updateOrder",
   async ({ id, status }, { dispatch, rejectWithValue }) => {
     try {
-      const response = await api.put(`/order/${id}`, status);
+      const response = await api.put(`/order/${id}`, { status });
       dispatch(
         showToastMessage({ message: "주문 수정 완료", status: "success" })
       );
-      dispatch(getOrderList());
+      dispatch(getOrderList({ page: 1 }));
       return response.data;
     } catch (error) {
       return rejectWithValue(error.error);
