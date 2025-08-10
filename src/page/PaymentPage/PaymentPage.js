@@ -36,7 +36,6 @@ const PaymentPage = () => {
   const handleSubmit = (event) => {
     event.preventDefault();
     // 오더 생성하기
-    console.log("ooooooo order 클릭?");
     const { firstName, lastName, contact, address, city, zip } = shipInfo;
     dispatch(
       createOrder({
