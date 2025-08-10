@@ -74,15 +74,15 @@ const orderSlice = createSlice({
         state.loading = false;
         state.error = action.payload;
       })
-      .addCase(getOrderList.pending, (state, action) => {
+      .addCase(getOrder.pending, (state, action) => {
         state.loading = true;
       })
-      .addCase(getOrderList.fulfilled, (state, action) => {
+      .addCase(getOrder.fulfilled, (state, action) => {
         state.loading = false;
         state.error = "";
         state.orderList = action.payload;
       })
-      .addCase(getOrderList.rejected, (state, action) => {
+      .addCase(getOrder.rejected, (state, action) => {
         state.loading = false;
         state.error = action.payload;
       });
