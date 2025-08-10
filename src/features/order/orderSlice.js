@@ -6,6 +6,7 @@ import { showToastMessage } from "../common/uiSlice";
 // Define initial state
 const initialState = {
   orderList: [],
+  myOrder:[],
   orderNum: "",
   selectedOrder: {},
   error: "",
@@ -87,9 +88,21 @@ const orderSlice = createSlice({
       .addCase(getOrder.fulfilled, (state, action) => {
         state.loading = false;
         state.error = "";
-        state.orderList = action.payload;
+        state.myOrder = action.payload;
       })
       .addCase(getOrder.rejected, (state, action) => {
+        state.loading = false;
+        state.error = action.payload;
+      })
+      .addCase(getOrderList.pending, (state, action) => {
+        state.loading = true;
+      })
+      .addCase(getOrderList.fulfilled, (state, action) => {
+        state.loading = false;
+        state.error = "";
+        state.orderList = action.payload;
+      })
+      .addCase(getOrderList.rejected, (state, action) => {
         state.loading = false;
         state.error = action.payload;
       });

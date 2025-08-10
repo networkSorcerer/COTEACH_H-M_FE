@@ -8,13 +8,12 @@ import { getOrder } from "../../features/order/orderSlice";
 
 const MyPage = () => {
   const dispatch = useDispatch();
-  const { orderList } = useSelector((state) => state.order);
-  console.log(orderList);
+  const { myOrder } = useSelector((state) => state.order);
   useEffect(() => {
     dispatch(getOrder());
   }, [dispatch]);
 
-  if (orderList?.length === 0) {
+  if (myOrder?.length === 0) {
     return (
       <Container className="no-order-box">
         <div>진행중인 주문이 없습니다.</div>
@@ -23,7 +22,7 @@ const MyPage = () => {
   }
   return (
     <Container className="status-card-container">
-      {orderList.map((item) => (
+      {myOrder.map((item) => (
         <OrderStatusCard
           orderItem={item}
           className="status-card-container"
