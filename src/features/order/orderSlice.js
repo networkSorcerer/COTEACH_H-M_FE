@@ -20,14 +20,18 @@ export const createOrder = createAsyncThunk(
   async (payload, { dispatch, rejectWithValue }) => {
     try {
       const response = await api.post("/order", payload);
-      if (response.status !== 200) {
-        dispatch(showToastMessage({ message: response.error, status: "fail" }));
-      }
+
       dispatch(showToastMessage({ message: "주문 완료", status: "success" }));
       dispatch(getCartList());
+
       return response.data.orderNum;
     } catch (error) {
-      return rejectWithValue(error.error);
+      // 백엔드에서 보낸 에러 메시지 추출
+      const errMsg = error.response?.data?.error || "주문에 실패했습니다.";
+
+      dispatch(showToastMessage({ message: errMsg, status: "fail" }));
+
+      return rejectWithValue(errMsg);
     }
   }
 );
