@@ -106,6 +106,7 @@ const orderSlice = createSlice({
         state.loading = false;
         state.error = "";
         state.orderList = action.payload.data;
+        state.totalPageNum = action.payload.totalPageNum;
       })
       .addCase(getOrderList.rejected, (state, action) => {
         state.loading = false;
