@@ -6,7 +6,7 @@ import { showToastMessage } from "../common/uiSlice";
 // Define initial state
 const initialState = {
   orderList: [],
-  myOrder:[],
+  myOrder: [],
   orderNum: "",
   selectedOrder: {},
   error: "",
@@ -47,7 +47,7 @@ export const getOrderList = createAsyncThunk(
   async (query, { rejectWithValue, dispatch }) => {
     try {
       const response = await api.get("/order/list", { params: { ...query } });
-      console.log("")
+      console.log("");
       return response.data;
     } catch (error) {
       return rejectWithValue(error.error);
@@ -101,7 +101,7 @@ const orderSlice = createSlice({
       .addCase(getOrderList.fulfilled, (state, action) => {
         state.loading = false;
         state.error = "";
-        state.orderList = action.payload;
+        state.orderList = action.payload.data;
       })
       .addCase(getOrderList.rejected, (state, action) => {
         state.loading = false;
