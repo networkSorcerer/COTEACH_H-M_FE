@@ -34,7 +34,7 @@ export const getOrder = createAsyncThunk(
   async (_, { rejectWithValue, dispatch }) => {
     try {
       const response = await api.get("/order");
-      return response.data;
+      return response.data.data;
     } catch (error) {
       return rejectWithValue(error.error);
     }
