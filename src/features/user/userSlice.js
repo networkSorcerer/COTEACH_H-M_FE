@@ -1,5 +1,4 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
-
 import { showToastMessage } from "../common/uiSlice";
 import api from "../../utils/api";
 import { getCartList, initialCart } from "../cart/cartSlice";
@@ -127,7 +126,7 @@ const userSlice = createSlice({
       })
       .addCase(loginWithGoogle.fulfilled, (state, action) => {
         state.loading = false;
-        state.user = action.payload.user;
+        state.user = action.payload;
         state.loginError = null;
       })
       .addCase(loginWithGoogle.rejected, (state, action) => {
