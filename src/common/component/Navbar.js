@@ -11,9 +11,11 @@ import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { logout } from "../../features/user/userSlice";
-
+import { getProductList } from "../../features/product/productSlice";
+// 메뉴리스트를 클릭했을때 값을 가지고 getProduct를 call하는데 내부적으로 find할때 카테고리 를 고려 해야 함 ....
 const Navbar = ({ user }) => {
   const dispatch = useDispatch();
+
   const { cartItemCount } = useSelector((state) => state.cart);
   const isMobile = window.navigator.userAgent.indexOf("Mobile") !== -1;
   const [showSearchBox, setShowSearchBox] = useState(false);
@@ -61,7 +63,9 @@ const Navbar = ({ user }) => {
 
         <div className="side-menu-list" id="menu-list">
           {menuList.map((menu, index) => (
-            <button key={index}>{menu}</button>
+            <button key={index} onClick={dispatch(getProductList(menu))}>
+              {menu}
+            </button>
           ))}
         </div>
       </div>
@@ -123,7 +127,9 @@ const Navbar = ({ user }) => {
         <ul className="menu">
           {menuList.map((menu, index) => (
             <li key={index}>
-              <a href="#">{menu}</a>
+              <a href="#" onClick={dispatch(getProductList(menu))}>
+                {menu}
+              </a>
             </li>
           ))}
         </ul>
