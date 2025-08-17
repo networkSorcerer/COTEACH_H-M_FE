@@ -20,7 +20,6 @@ export const getProductDetail = createAsyncThunk(
   async (id, { rejectWithValue }) => {
     try {
       const response = await api.get(`/product/${id}`);
-      console.log("getProductDetail dddd", response);
       return response.data;
     } catch (error) {
       return rejectWithValue(error.error);

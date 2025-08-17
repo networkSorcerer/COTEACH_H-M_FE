@@ -34,7 +34,6 @@ const NewItemDialog = ({ mode, showDialog, setShowDialog }) => {
   const [stockError, setStockError] = useState(false);
 
   useEffect(() => {
-    console.log("ssssss", success);
     dispatch(clearProductStatus());
     if (success) setShowDialog(false);
   }, [success]);
@@ -58,7 +57,6 @@ const NewItemDialog = ({ mode, showDialog, setShowDialog }) => {
       }
     }
   }, [showDialog]);
-  console.log("stock", stock);
 
   const handleClose = () => {
     setShowDialog(false); // 모달 닫기
@@ -69,15 +67,13 @@ const NewItemDialog = ({ mode, showDialog, setShowDialog }) => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    console.log("formData", formData);
-    console.log("stock", stock);
+
     //재고를 입력했는지 확인, 아니면 에러
     if (stock.length === 0) return setStockError(true);
     // 재고를 배열에서 객체로 바꿔주기
     const totalStock = stock.reduce((total, item) => {
       return { ...total, [item[0]]: parseInt(item[1]) };
     }, {});
-    console.log("totalStock", totalStock);
     // [['M',2]] 에서 {M:2}로
     if (mode === "new") {
       //새 상품 만들기
