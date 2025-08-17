@@ -34,6 +34,11 @@ const Navbar = ({ user }) => {
     dispatch(logout());
     navigate("/");
   };
+
+  const ClickMenu = (menu) => {
+    console.log("mmmmmmmm", memu);
+    dispatch(getProductList({ menu }));
+  };
   return (
     <div>
       {showSearchBox && (
@@ -63,7 +68,7 @@ const Navbar = ({ user }) => {
 
         <div className="side-menu-list" id="menu-list">
           {menuList.map((menu, index) => (
-            <button key={index} onClick={dispatch(getProductList(menu))}>
+            <button key={index} onClick={() => ClickMenu(menu)}>
               {menu}
             </button>
           ))}
@@ -127,7 +132,7 @@ const Navbar = ({ user }) => {
         <ul className="menu">
           {menuList.map((menu, index) => (
             <li key={index}>
-              <a href="#" onClick={dispatch(getProductList(menu))}>
+              <a href="#" onClick={() => ClickMenu(menu)}>
                 {menu}
               </a>
             </li>
