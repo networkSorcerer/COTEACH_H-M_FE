@@ -36,7 +36,7 @@ const Navbar = ({ user }) => {
   };
 
   const ClickMenu = (menu) => {
-    console.log("mmmmmmmm", memu);
+    console.log("mmmmmmmm", menu);
     dispatch(getProductList({ menu }));
   };
   return (
